@@ -1,0 +1,9 @@
+C:\Users\Joël\Desktop\VIAUC Notes\WEE1\Project Assignment\Budget_Tracker\Budget_Tracker\Budget_Tracker\bin\Budget_Tracker.dll
+C:\Users\Joël\Desktop\VIAUC Notes\WEE1\Project Assignment\Budget_Tracker\Budget_Tracker\Budget_Tracker\bin\Budget_Tracker.pdb
+C:\Users\Joël\Desktop\VIAUC Notes\WEE1\Project Assignment\Budget_Tracker\Budget_Tracker\Budget_Tracker\obj\Debug\Budget_Tracker.dll
+C:\Users\Joël\Desktop\VIAUC Notes\WEE1\Project Assignment\Budget_Tracker\Budget_Tracker\Budget_Tracker\obj\Debug\Budget_Tracker.pdb
+C:\Users\Joël\Desktop\VIAUC Notes\WEE1\Project Assignment\Budget_Tracker\Budget_Tracker\bin\Budget_Tracker.dll
+C:\Users\Joël\Desktop\VIAUC Notes\WEE1\Project Assignment\Budget_Tracker\Budget_Tracker\bin\Budget_Tracker.pdb
+C:\Users\Joël\Desktop\VIAUC Notes\WEE1\Project Assignment\Budget_Tracker\Budget_Tracker\obj\Debug\Budget_Tracker.csprojResolveAssemblyReference.cache
+C:\Users\Joël\Desktop\VIAUC Notes\WEE1\Project Assignment\Budget_Tracker\Budget_Tracker\obj\Debug\Budget_Tracker.dll
+C:\Users\Joël\Desktop\VIAUC Notes\WEE1\Project Assignment\Budget_Tracker\Budget_Tracker\obj\Debug\Budget_Tracker.pdb
