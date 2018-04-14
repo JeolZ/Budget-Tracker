@@ -12,12 +12,24 @@
 <body>
     <form id="form1" runat="server">
 
+        <!-- Load sitemap -->
+        <asp:SiteMapDataSource ID="GeneralSiteMap" runat="server" />
+
+        <!-- Use SiteMap to show the current path -->
+        <div id="path">
+            <asp:SiteMapPath ID="SiteMap1" runat="server" PathSeparator=" >>" ForeColor="#0219B0"></asp:SiteMapPath>
+        </div>
+
+        <!-- Use SiteMap as a List -->
+        <asp:Menu ID="SiteMapList" DataSourceID="GeneralSiteMap" runat="server"></asp:Menu>
+
         <!-- Placeholder -->
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 Master Page placerholder1
             </asp:ContentPlaceHolder>
         </div>
+
 
         <!-- Login Templates -->
         <div id="menu">
