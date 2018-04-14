@@ -31,31 +31,49 @@ namespace Budget_Tracker {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// GeneralSiteMap control.
+        /// GeneralSiteMapDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SiteMapDataSource GeneralSiteMap;
+        protected global::System.Web.UI.WebControls.SiteMapDataSource GeneralSiteMapDataSource;
         
         /// <summary>
-        /// SiteMap1 control.
+        /// AdministratorSiteMapDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SiteMapPath SiteMap1;
+        protected global::System.Web.UI.WebControls.SiteMapDataSource AdministratorSiteMapDataSource;
         
         /// <summary>
-        /// SiteMapList control.
+        /// MemberSiteMapDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu SiteMapList;
+        protected global::System.Web.UI.WebControls.SiteMapDataSource MemberSiteMapDataSource;
+        
+        /// <summary>
+        /// SiteMapsView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LoginView SiteMapsView;
+        
+        /// <summary>
+        /// GeneralSiteMapPath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SiteMapPath GeneralSiteMapPath;
         
         /// <summary>
         /// ContentPlaceHolder1 control.
@@ -67,12 +85,12 @@ namespace Budget_Tracker {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
         
         /// <summary>
-        /// LoginView1 control.
+        /// SignedupView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView LoginView1;
+        protected global::System.Web.UI.WebControls.LoginView SignedupView;
     }
 }

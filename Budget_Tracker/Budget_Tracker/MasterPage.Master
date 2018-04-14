@@ -4,24 +4,48 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <link href="style.css" type="text/css" rel="stylesheet" />
+    <title>Budget Tracker</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
-        head placeholder
+        <img id="HeaderImage" src="images/header.png" alt="Header Image" />
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
 
-        <!-- Load sitemap -->
-        <asp:SiteMapDataSource ID="GeneralSiteMap" runat="server" />
+        <!-- Load all sitemaps -->
+        <asp:SiteMapDataSource ID="GeneralSiteMapDataSource" runat="server" />
+        <asp:SiteMapDataSource ID="AdministratorSiteMapDataSource" runat="server" SiteMapProvider="AdministratorSiteMap" />
+        <asp:SiteMapDataSource ID="MemberSiteMapDataSource" runat="server" SiteMapProvider="MemberSiteMap" />
 
         <!-- Use SiteMap to show the current path -->
-        <div id="path">
-            <asp:SiteMapPath ID="SiteMap1" runat="server" PathSeparator=" >>" ForeColor="#0219B0"></asp:SiteMapPath>
+        <div id="SiteMapsList">
+            <!-- We show the default sitemap for visitors (AnonymousTempalte) -->
+            <!-- We show the specific sitemaps for members and administrators (RoleGroups) -->
+            <asp:LoginView ID="SiteMapsView" runat="server">
+                <AnonymousTemplate>
+                    <asp:Menu ID="GeneralSiteMapMenu" DataSourceID="GeneralSiteMapDataSource" runat="server"></asp:Menu>
+                </AnonymousTemplate>
+
+                <RoleGroups>
+                    <asp:RoleGroup Roles="Administrator">
+                        <ContentTemplate>
+                            <asp:Menu ID="AdministratorSiteMapMenu" DataSourceID="AdministratorSiteMapDataSource" runat="server"></asp:Menu>
+                        </ContentTemplate>
+                    </asp:RoleGroup>
+
+                    <asp:RoleGroup Roles="Member">
+                        <ContentTemplate>
+                            <asp:Menu ID="MemberSiteMapMenu" DataSourceID="MemberSiteMapDataSource" runat="server"></asp:Menu>
+                        </ContentTemplate>
+                    </asp:RoleGroup>
+                </RoleGroups>
+            </asp:LoginView>
         </div>
 
-        <!-- Use SiteMap as a List -->
-        <asp:Menu ID="SiteMapList" DataSourceID="GeneralSiteMap" runat="server"></asp:Menu>
+        <!-- Show the sitemap path for every user -->
+        <asp:SiteMapPath ID="GeneralSiteMapPath" runat="server" PathSeparator=" >>" ForeColor="#0219B0"></asp:SiteMapPath>
+        <br />
 
         <!-- Placeholder -->
         <div>
@@ -32,7 +56,7 @@
 
 
         <!-- Login Templates -->
-        <div id="menu">
+        <div id="LoginTemplates">
 
             <!-- If user is a non-logged-in visitor (AnonymousTemplate), then... -->
             <!-- Show the login form -->
@@ -40,7 +64,7 @@
 
             <!-- If the user is logged-in (LoggedInTemplate), then... -->
             <!-- Show login status, so he can logout -->
-            <asp:LoginView ID="LoginView1" runat="server">
+            <asp:LoginView ID="SignedupView" runat="server">
 
                 <AnonymousTemplate>
                     <asp:Login ID="Login" runat="server" DisplayRememberMe="False"></asp:Login>
