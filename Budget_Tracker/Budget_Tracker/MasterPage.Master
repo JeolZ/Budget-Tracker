@@ -1,80 +1,75 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="Budget_Tracker.MasterPage" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
-    <link href="style.css" type="text/css" rel="stylesheet" />
     <title>Budget Tracker</title>
+    <link href="~/style.css" rel="stylesheet" type="text/css" runat="server" />
     <asp:ContentPlaceHolder ID="head" runat="server">
-        <img id="HeaderImage" src="images/header.png" alt="Header Image" />
     </asp:ContentPlaceHolder>
 </head>
+
 <body>
     <form id="form1" runat="server">
+        <!-- Script Manager to include to use Ajax Toolkit -->
+        <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
+
+
+        <!-- Placerholder for the header image -->
+        <asp:ContentPlaceHolder ID="header" runat="server">
+            <img id="HeaderImage" src="~/images/header.png" alt="Header Image" runat="server" />
+        </asp:ContentPlaceHolder>
 
         <!-- Load all sitemaps -->
         <asp:SiteMapDataSource ID="GeneralSiteMapDataSource" runat="server" />
         <asp:SiteMapDataSource ID="AdministratorSiteMapDataSource" runat="server" SiteMapProvider="AdministratorSiteMap" />
         <asp:SiteMapDataSource ID="MemberSiteMapDataSource" runat="server" SiteMapProvider="MemberSiteMap" />
 
-        <!-- Use SiteMap to show the current path -->
+        <!-- Show the sitemap path for every user, to indicate where he is where now -->
+        <div>
+            <asp:SiteMapPath ID="SiteMapPath" runat="server" BackColor="#99CCFF" BorderColor="#CCCCFF" BorderStyle="Inset" Font-Italic="True" Font-Bold="True" Font-Size="Larger" ForeColor="#0066FF"></asp:SiteMapPath>
+        </div>
+
+        <!-- Use SiteMaps to show the tree of the website -->
         <div id="SiteMapsList">
             <!-- We show the default sitemap for visitors (AnonymousTempalte) -->
             <!-- We show the specific sitemaps for members and administrators (RoleGroups) -->
             <asp:LoginView ID="SiteMapsView" runat="server">
                 <AnonymousTemplate>
-                    <asp:Menu ID="GeneralSiteMapMenu" DataSourceID="GeneralSiteMapDataSource" runat="server"></asp:Menu>
+                    <asp:TreeView ID="GeneralSiteMapMenu" DataSourceID="GeneralSiteMapDataSource" runat="server" ExpandDepth="0"></asp:TreeView>
                 </AnonymousTemplate>
 
                 <RoleGroups>
                     <asp:RoleGroup Roles="Administrator">
                         <ContentTemplate>
-                            <asp:Menu ID="AdministratorSiteMapMenu" DataSourceID="AdministratorSiteMapDataSource" runat="server"></asp:Menu>
+                            <asp:TreeView ID="AdministratorSiteMapMenu" DataSourceID="AdministratorSiteMapDataSource" runat="server"></asp:TreeView>
                         </ContentTemplate>
                     </asp:RoleGroup>
 
                     <asp:RoleGroup Roles="Member">
                         <ContentTemplate>
-                            <asp:Menu ID="MemberSiteMapMenu" DataSourceID="MemberSiteMapDataSource" runat="server"></asp:Menu>
+                            <asp:TreeView ID="MemberSiteMapMenu" DataSourceID="MemberSiteMapDataSource" runat="server"></asp:TreeView>
                         </ContentTemplate>
                     </asp:RoleGroup>
                 </RoleGroups>
             </asp:LoginView>
         </div>
 
-        <!-- Show the sitemap path for every user -->
-        <asp:SiteMapPath ID="GeneralSiteMapPath" runat="server" PathSeparator=" >>" ForeColor="#0219B0"></asp:SiteMapPath>
-        <br />
-
-        <!-- Placeholder -->
-        <div>
+        <!-- Main Placeholder -->
+        <div id="PlaceholderCenter">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 Master Page placerholder1
             </asp:ContentPlaceHolder>
         </div>
 
-
         <!-- Login Templates -->
-        <div id="LoginTemplates">
-
-            <!-- If user is a non-logged-in visitor (AnonymousTemplate), then... -->
-            <!-- Show the login form -->
-            <!-- Show the Signup form -->
-
-            <!-- If the user is logged-in (LoggedInTemplate), then... -->
-            <!-- Show login status, so he can logout -->
-            <asp:LoginView ID="SignedupView" runat="server">
-
-                <AnonymousTemplate>
-                    <asp:Login ID="Login" runat="server" DisplayRememberMe="False"></asp:Login>
-                    <asp:HyperLink ID="SignupHyperlink" NavigateUrl="~/Signup.aspx" runat="server">Signup!</asp:HyperLink>
-                </AnonymousTemplate>
-
+        <div id="LoginStatus">
+            <!-- If the user is logged-in, then show login status, so he can logout -->
+            <asp:LoginView ID="LoginStatusView" runat="server">
                 <LoggedInTemplate>
                     <asp:LoginStatus ID="LoginStatus1" runat="server" />
                 </LoggedInTemplate>
-
             </asp:LoginView>
         </div>
 
