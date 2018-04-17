@@ -27,12 +27,12 @@
         <asp:SiteMapDataSource ID="MemberSiteMapDataSource" runat="server" SiteMapProvider="MemberSiteMap" />
 
         <!-- Show the sitemap path for every user, to indicate where he is where now -->
-        <div>
+        <div id="SiteMapPathTop">
             <asp:SiteMapPath ID="SiteMapPath" runat="server" BackColor="#99CCFF" BorderColor="#CCCCFF" BorderStyle="Inset" Font-Italic="True" Font-Bold="True" Font-Size="Larger" ForeColor="#0066FF"></asp:SiteMapPath>
         </div>
 
         <!-- Use SiteMaps to show the tree of the website -->
-        <div id="SiteMapsList">
+        <div id="SiteMapsListLeft">
             <!-- We show the default sitemap for visitors (AnonymousTempalte) -->
             <!-- We show the specific sitemaps for members and administrators (RoleGroups) -->
             <asp:LoginView ID="SiteMapsView" runat="server">
@@ -64,11 +64,11 @@
         </div>
 
         <!-- Login Templates -->
-        <div id="LoginStatus">
+        <div id="LoginStatusRight">
             <!-- If the user is logged-in, then show login status, so he can logout -->
             <asp:LoginView ID="LoginStatusView" runat="server">
                 <LoggedInTemplate>
-                    <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                    <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutPageUrl="~/index.aspx" LogoutAction="Redirect" />
                 </LoggedInTemplate>
             </asp:LoginView>
         </div>

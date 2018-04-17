@@ -1,17 +1,37 @@
 ﻿#HeaderImage {
     max-width: 100%;
+    max-height: 100vh;
+    height: auto;
 }
 
+#SiteMapPathTop {
+    float: left;
+}
+
+#SiteMapsListLeft {
+    height: 100%;
+    width: 10%;
+    clear: left;
+    float: left;
+}
+
+#PlaceholderCenter {
+    float: left;
+}
+
+#LoginStatusRight {
+    height: 100%;
+    width: 10%;
+    float: right;
+}
 /** questions:
-    - why is my CSS not recognized?
-    - what to use in the database if we only want to show the budget of a specific member?
-    - how to position div appropriately?
-    - how to add form in a form?
-    - bug: how to logout from the addChange page?
-    - how to import dabatase onto git?
+    - what to use in the database if we only want to show the budget of a specific member? - use aspnet_users table
+    - how to position div appropriately? - float and clear
+    - how to add form in a form? - code
+    - how to import dabatase onto git? (try to import mdf)
 */
 
 /**
     probs:
-    - why sitemap path doesnt show?
+    - why sitemap path doesnt show - have to do a specific site map path for every role
  */
