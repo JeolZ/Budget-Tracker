@@ -25,10 +25,30 @@
         <asp:SiteMapDataSource ID="GeneralSiteMapDataSource" runat="server" />
         <asp:SiteMapDataSource ID="AdministratorSiteMapDataSource" runat="server" SiteMapProvider="AdministratorSiteMap" />
         <asp:SiteMapDataSource ID="MemberSiteMapDataSource" runat="server" SiteMapProvider="MemberSiteMap" />
-
+        
         <!-- Show the sitemap path for every user, to indicate where he is where now -->
         <div id="SiteMapPathTop">
-            <asp:SiteMapPath ID="SiteMapPath" runat="server" BackColor="#99CCFF" BorderColor="#CCCCFF" BorderStyle="Inset" Font-Italic="True" Font-Bold="True" Font-Size="Larger" ForeColor="#0066FF"></asp:SiteMapPath>
+            <!-- We show the default sitemap path for visitors (AnonymousTempalte) -->
+            <!-- We show the specific sitemap paths for members and administrators (RoleGroups) -->
+            <asp:LoginView ID="LoginView1" runat="server">
+                <AnonymousTemplate>
+                    <asp:SiteMapPath ID="SiteMapPath" runat="server" BackColor="#99CCFF" BorderColor="#CCCCFF" BorderStyle="Inset" Font-Italic="True" Font-Bold="True" Font-Size="Larger" ForeColor="#0066FF"></asp:SiteMapPath>
+                </AnonymousTemplate>
+
+                <RoleGroups>
+                    <asp:RoleGroup Roles="Administrator">
+                        <ContentTemplate>
+                    <asp:SiteMapPath ID="SiteMapPath" SiteMapProvider="AdministratorSiteMap" runat="server" BackColor="#99CCFF" BorderColor="#CCCCFF" BorderStyle="Inset" Font-Italic="True" Font-Bold="True" Font-Size="Larger" ForeColor="#0066FF"></asp:SiteMapPath>
+                        </ContentTemplate>
+                    </asp:RoleGroup>
+
+                    <asp:RoleGroup Roles="Member">
+                        <ContentTemplate>
+                    <asp:SiteMapPath ID="SiteMapPath" SiteMapProvider="MemberSiteMap" runat="server" BackColor="#99CCFF" BorderColor="#CCCCFF" BorderStyle="Inset" Font-Italic="True" Font-Bold="True" Font-Size="Larger" ForeColor="#0066FF"></asp:SiteMapPath>
+                        </ContentTemplate>
+                    </asp:RoleGroup>
+                </RoleGroups>
+            </asp:LoginView>
         </div>
 
         <!-- Use SiteMaps to show the tree of the website -->
