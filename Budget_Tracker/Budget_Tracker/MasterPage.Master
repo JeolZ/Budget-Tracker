@@ -88,6 +88,7 @@
             <!-- If the user is logged-in, then show login status, so he can logout -->
             <asp:LoginView ID="LoginStatusView" runat="server">
                 <LoggedInTemplate>
+                    Welcome <asp:LoginName ID="LoginName1" runat="server" />!
                     <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutPageUrl="~/index.aspx" LogoutAction="Redirect" />
                 </LoggedInTemplate>
             </asp:LoginView>

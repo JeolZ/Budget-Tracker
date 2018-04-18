@@ -72,5 +72,10 @@
             <asp:TextBox ID="ChangeCommentTB" runat="server"></asp:TextBox>
         </div>
 
+        <div id="ChangeConfirm">
+            <asp:Button ID="ConfirmButton" OnClick="ConfirmButton_Click" runat="server" Text="Confirm" />
+        </div>
+
+        <asp:Label ID="ResultLabel" runat="server" Text=""></asp:Label>
     </div>
 </asp:Content>
