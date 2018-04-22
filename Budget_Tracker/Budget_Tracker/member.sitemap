@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="index.aspx" title="Home"  description="Home page">
-    <siteMapNode url="Member\AddChange.aspx" title="AddChange"  description="Add a change" />
+    <siteMapNode url="Member\AddChange.aspx" title="Add a change"  description="Add a change" />
+    <siteMapNode url="Member\Budget.aspx" title="See budget"  description="See budget" />
   </siteMapNode>
 </siteMap>
