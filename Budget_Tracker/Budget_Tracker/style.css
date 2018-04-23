@@ -10,13 +10,14 @@
 
 #SiteMapsListLeft {
     height: 100%;
-    width: 10%;
+    width: 20%;
     clear: left;
     float: left;
 }
 
 #PlaceholderCenter {
     float: left;
+    margin: 50px;
 }
 
 #LoginStatusRight {
@@ -25,13 +26,7 @@
     float: right;
 }
 /** questions:
-    - what to use in the database if we only want to show the budget of a specific member? - use aspnet_users table
-    - how to position div appropriately? - float and clear
-    - how to add form in a form? - code
-    - how to import dabatase onto git? (try to import mdf)
+    - how to get gridview column count? -> so as to be able to use gridview just for data (and not to show them)
+    - how to add hyperlinks to gridview?
+    - how to use paging in gridview?
 */
-
-/**
-    probs:
-    - why sitemap path doesnt show - have to do a specific site map path for every role
- */

@@ -61,6 +61,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administrator\SearchMember.aspx" />
     <Content Include="images\header.png" />
     <Content Include="index.aspx" />
     <Content Include="Member\AddChange.aspx" />
@@ -72,6 +73,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrator\SearchMember.aspx.cs">
+      <DependentUpon>SearchMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\SearchMember.aspx.designer.cs">
+      <DependentUpon>SearchMember.aspx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -121,9 +129,7 @@
     </None>
     <Content Include="Web.sitemap" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Administrator\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -21,13 +21,6 @@ namespace Budget_Tracker
         {
             // Set the role of the created user to the selected role in the DropDownList
             Roles.AddUserToRole(CreateUserWizard1.UserName, "Member");
-
-            /* If newly created users should always belong to the same role (e.g. on a site where 
-             * users can register themselves, they would probably all belong to "userRole"), we don't
-             * need a DropDownList, and the role could simply be hardcoded like this:
-             * Roles.AddUserToRole(CreateUserWizard1.UserName, "userRole");
-             */
-
         }
     }
 }
