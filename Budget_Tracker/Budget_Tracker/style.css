@@ -1,7 +1,5 @@
 ﻿#HeaderImage {
     max-width: 100%;
-    max-height: 100vh;
-    height: auto;
 }
 
 #SiteMapPathTop {
@@ -17,7 +15,6 @@
 
 #PlaceholderCenter {
     float: left;
-    margin: 50px;
 }
 
 #LoginStatusRight {

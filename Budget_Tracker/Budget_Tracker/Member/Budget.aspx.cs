@@ -15,11 +15,15 @@ namespace Budget_Tracker.Member
 {
     public partial class Budget : System.Web.UI.Page
     {
+        // todo: potentially needless to put it there
+        private DataTable datatable;
+
+        // Pseudo of the user you want to see the budget of
+        string pseudo;
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Pseudo of the user you want to see the budget of
-            string pseudo = "";
-
             // if there is a GET parameter AND the user going on the page is an administrator
             if (User.IsInRole("Administrator") && Request.QueryString["pseudo"] != null)
             {
@@ -52,14 +56,34 @@ namespace Budget_Tracker.Member
 
             // Adapt the data from the SQL query in order to populate the GridView
             SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
-            DataTable datatable = new DataTable();
+            datatable = new DataTable();
             adapter.Fill(datatable);
+
+            // Add a new column to the DataTable to add the buttons to allow the user to modify a change
+            datatable.Columns.Add(new DataColumn("Modify", typeof(string)));
+
             BudgetGridView.DataSource = datatable;
             BudgetGridView.DataBind();
             con.Close();
+        }
 
+        protected void BudgetGridView_RowCreated(object sender, GridViewRowEventArgs e)
+        {
             // Hide columns from the GridView (because we need to data but we don't want to show it)
+            e.Row.Cells[0].Visible = false;
+        }
 
+        protected void BudgetGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Button link = new Button();
+                link.Text = "link!";
+                Button link2 = new Button();
+                link2.Text = "link2!";
+                e.Row.Cells[9].Controls.Add(link);
+                e.Row.Cells[9].Controls.Add(link2);
+            }
         }
     }
 }
