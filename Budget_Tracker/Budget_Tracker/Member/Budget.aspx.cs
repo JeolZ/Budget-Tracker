@@ -67,23 +67,53 @@ namespace Budget_Tracker.Member
             con.Close();
         }
 
-        protected void BudgetGridView_RowCreated(object sender, GridViewRowEventArgs e)
-        {
-            // Hide columns from the GridView (because we need to data but we don't want to show it)
-            e.Row.Cells[0].Visible = false;
-        }
-
         protected void BudgetGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            // Hide columns from the GridView (because we need to data but we don't want to show it)
+            //e.Row.Cells[0].Visible = false;
+
+            // Populate the new column with buttons to manipulate the rows
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                Button link = new Button();
-                link.Text = "link!";
-                Button link2 = new Button();
-                link2.Text = "link2!";
-                e.Row.Cells[9].Controls.Add(link);
-                e.Row.Cells[9].Controls.Add(link2);
+                // Create new buttons, one to delete the row, the other one to edit it
+                Button deleteBTN = new Button();
+                Button editBTN = new Button();
+                deleteBTN.Text = "delete";
+                deleteBTN.Click += (sender1, EventArgs) => { DeleteChange(sender1, EventArgs, e.Row.Cells[0].Text); };
+
+                // Add them at the last columns
+                e.Row.Cells[e.Row.Controls.Count - 1].Controls.Add(deleteBTN);
+                e.Row.Cells[e.Row.Controls.Count - 1].Controls.Add(editBTN);
             }
+        }
+
+        protected void DeleteChange(object sender, EventArgs e, string id)
+        {
+            // Gets the default connection string/path to our database from the web.config file
+            string dbstring = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+
+            // Creates a connection to our database
+            SqlConnection con = new SqlConnection(dbstring);
+
+            // query
+            string sqlStr = "DELETE FROM CHANGE WHERE ChangeId = @id";
+
+            // Open the database connection
+            con.Open();
+
+            // Create an executable SQL command containing our SQL statement and the database connection
+            SqlCommand sqlCmd = new SqlCommand(sqlStr, con);
+
+            // Fill in the parameters in our prepared SQL statement
+            sqlCmd.Parameters.AddWithValue("@id", id);
+
+            // Execute SQL Command
+            sqlCmd.ExecuteNonQuery();
+
+            con.Close();
+
+            // Refresh the page
+            Response.Redirect(Request.RawUrl);
         }
     }
 }
