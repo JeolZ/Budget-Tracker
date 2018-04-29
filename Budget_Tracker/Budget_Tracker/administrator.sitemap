@@ -7,6 +7,7 @@
     </siteMapNode>
     <siteMapNode title="Administrator back office"  description="Back office">
       <siteMapNode url="Administrator\SearchMember.aspx" title="Search members"  description="Search members" />
+      <siteMapNode url="Administrator\AddItems.aspx" title="Add items"  description="Add items" />
     </siteMapNode>
   </siteMapNode>
 </siteMap>

@@ -60,7 +60,7 @@ namespace Budget_Tracker.Member
             adapter.Fill(datatable);
 
             // Add a new column to the DataTable to add the buttons to allow the user to modify a change
-            datatable.Columns.Add(new DataColumn("Modify", typeof(string)));
+            datatable.Columns.Add(new DataColumn("Edit", typeof(string)));
 
             BudgetGridView.DataSource = datatable;
             BudgetGridView.DataBind();
@@ -70,7 +70,7 @@ namespace Budget_Tracker.Member
         protected void BudgetGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             // Hide columns from the GridView (because we need to data but we don't want to show it)
-            //e.Row.Cells[0].Visible = false;
+            e.Row.Cells[0].Visible = false;
 
             // Populate the new column with buttons to manipulate the rows
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -78,8 +78,10 @@ namespace Budget_Tracker.Member
                 // Create new buttons, one to delete the row, the other one to edit it
                 Button deleteBTN = new Button();
                 Button editBTN = new Button();
-                deleteBTN.Text = "delete";
+                deleteBTN.Text = "Delete";
+                editBTN.Text = "Edit";
                 deleteBTN.Click += (sender1, EventArgs) => { DeleteChange(sender1, EventArgs, e.Row.Cells[0].Text); };
+                editBTN.Click += (sender1, EventArgs) => { RedirectsToEdit(sender1, EventArgs, e.Row.Cells[0].Text); };
 
                 // Add them at the last columns
                 e.Row.Cells[e.Row.Controls.Count - 1].Controls.Add(deleteBTN);
@@ -114,6 +116,12 @@ namespace Budget_Tracker.Member
 
             // Refresh the page
             Response.Redirect(Request.RawUrl);
+        }
+
+        protected void RedirectsToEdit(object sender, EventArgs e, string id)
+        {
+            // Redirect to the page to edit the change with the right id
+            Response.Redirect("AddChange.aspx?id=" + id);
         }
     }
 }

@@ -3,5 +3,4 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:GridView ID="BudgetGridView" OnRowDataBound="BudgetGridView_RowDataBound" runat="server">
     </asp:GridView>
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 </asp:Content>
