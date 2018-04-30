@@ -40,5 +40,6 @@
             <asp:Button ID="CreatePMBTN" OnClick="addPaymentMethod" runat="server" Text="Create" />
         </asp:Panel>
     </asp:Panel>
+    <asp:Label ID="ResultLabel" runat="server" Text=""></asp:Label>
 
 </asp:Content>

@@ -108,6 +108,9 @@ namespace Budget_Tracker.Administrator
             sqlCmd.ExecuteNonQuery();
 
             con.Close();
+
+            // Refresh the page
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void addPaymentMethod(object sender, EventArgs e)
@@ -133,6 +136,9 @@ namespace Budget_Tracker.Administrator
             sqlCmd.ExecuteNonQuery();
 
             con.Close();
+
+            // Refresh the page
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void addPurpose(object sender, EventArgs e)
@@ -158,6 +164,9 @@ namespace Budget_Tracker.Administrator
             sqlCmd.ExecuteNonQuery();
 
             con.Close();
+
+            // Refresh the page
+            Response.Redirect(Request.RawUrl);
         }
 
     }

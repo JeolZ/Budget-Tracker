@@ -15,7 +15,6 @@ namespace Budget_Tracker.Member
 {
     public partial class Budget : System.Web.UI.Page
     {
-        // todo: potentially needless to put it there
         private DataTable datatable;
 
         // Pseudo of the user you want to see the budget of

@@ -27,7 +27,7 @@
         <!-- indicate the currency of the change -->
         <div id="ChangeCurrency">
             Currency:
-            <asp:DropDownList ID="ChangeCurrencyDD" runat="server" DataSourceID="CurrencyDataSource" DataTextField="currencyName" DataValueField="currencyName"></asp:DropDownList>
+            <asp:DropDownList ID="ChangeCurrencyDD" OnDataBound="ChangeCurrencyDD_DataBound" runat="server" DataSourceID="CurrencyDataSource" DataTextField="currencyName" DataValueField="currencyName"></asp:DropDownList>
             <asp:SqlDataSource ID="CurrencyDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [currencyName] FROM [Currency]"></asp:SqlDataSource>
         </div>
 
@@ -49,14 +49,14 @@
         <!-- indicate the payment method of the change -->
         <div id="ChangePaymentMethod">
             Payment Method:
-            <asp:DropDownList ID="ChangePaymentMethodDD" runat="server" DataSourceID="PaymentMethodDataSource" DataTextField="paymentMethodName" DataValueField="paymentMethodName"></asp:DropDownList>
+            <asp:DropDownList ID="ChangePaymentMethodDD" OnDataBound="ChangePaymentMethodDD_DataBound" runat="server" DataSourceID="PaymentMethodDataSource" DataTextField="paymentMethodName" DataValueField="paymentMethodName"></asp:DropDownList>
             <asp:SqlDataSource ID="PaymentMethodDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [paymentMethodName] FROM [PaymentMethod]"></asp:SqlDataSource>
         </div>
 
         <!-- indicate the purpose of the change -->
         <div id="ChangePurpose">
             Purpose:
-            <asp:DropDownList ID="ChangePurposeDD" runat="server" DataSourceID="PurposeDataSource" DataTextField="PurposeName" DataValueField="PurposeName"></asp:DropDownList>
+            <asp:DropDownList ID="ChangePurposeDD" OnDataBound="ChangePurposeDD_DataBound" runat="server" DataSourceID="PurposeDataSource" DataTextField="PurposeName" DataValueField="PurposeName"></asp:DropDownList>
             <asp:SqlDataSource ID="PurposeDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [PurposeName] FROM [Purpose]"></asp:SqlDataSource>
         </div>
 
