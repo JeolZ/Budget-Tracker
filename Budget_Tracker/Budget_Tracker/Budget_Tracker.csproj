@@ -128,7 +128,9 @@
   <ItemGroup>
     <Content Include="MasterPage.Master" />
     <Content Include="member.sitemap" />
-    <Content Include="administrator.sitemap" />
+    <Content Include="administrator.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

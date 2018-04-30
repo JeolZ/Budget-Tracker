@@ -69,7 +69,7 @@ namespace Budget_Tracker.Member
 
         protected void BudgetGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            // Hide columns from the GridView (because we need to data but we don't want to show it)
+            // Hide columns from the GridView (because we need the data but we don't want to show it)
             e.Row.Cells[0].Visible = false;
 
             // Populate the new column with buttons to manipulate the rows

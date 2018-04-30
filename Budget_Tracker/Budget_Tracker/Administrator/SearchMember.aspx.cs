@@ -82,12 +82,16 @@ namespace Budget_Tracker.Administrator
 
         protected void upgradeUser(object sender, EventArgs e, string username)
         {
-            // Remove user from Member
-            Roles.RemoveUserFromRole(username, "Member");
-            // Add user to Administrator
-            Roles.AddUserToRole(username, "Administrator");
-            // Refresh the page
-            Response.Redirect(Request.RawUrl);
+            // if the user is a member
+            if (Roles.GetRolesForUser(username).Contains("Member"))
+            {
+                // Remove user from Member
+                Roles.RemoveUserFromRole(username, "Member");
+                // Add user to Administrator
+                Roles.AddUserToRole(username, "Administrator");
+                // Refresh the page
+                Response.Redirect(Request.RawUrl);
+            }
         }
 
         protected void budgetUser(object sender, EventArgs e, string username)
