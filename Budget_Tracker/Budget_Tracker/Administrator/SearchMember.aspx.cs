@@ -46,7 +46,7 @@ namespace Budget_Tracker.Administrator
             MemberGridView.DataBind();
             con.Close();
 
-
+            AssignClassesToRow();
         }
 
         protected void MemberGridView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -98,6 +98,16 @@ namespace Budget_Tracker.Administrator
         {
             // Redirects to the user's budget page
             Response.Redirect("../Member/Budget.aspx?pseudo=" + username);
+        }
+
+        protected void AssignClassesToRow()
+        {
+            // for each rows in the GridView
+            foreach (GridViewRow r in MemberGridView.Rows)
+            {
+                r.CssClass = "GridViewRow";
+            }
+            MemberGridView.HeaderRow.CssClass = "HeaderRowGridView";
         }
     }
 }

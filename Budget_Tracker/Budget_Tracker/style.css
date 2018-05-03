@@ -1,5 +1,5 @@
-﻿#HeaderImage {
-    max-width: 100%;
+﻿.HeaderImage {
+    width: 100%;
 }
 
 #SiteMapPathTop {
@@ -15,15 +15,44 @@
 
 #PlaceholderCenter {
     float: left;
+    margin-top: 50px;
+    margin-left: 50px;
 }
 
-#LoginStatusRight {
+#loginDiv {
+    padding: 5px;
     height: 100%;
     width: 10%;
     float: right;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color:#F8EDA5;
 }
-/** questions:
-    - how to get gridview column count? -> so as to be able to use gridview just for data (and not to show them)
-    - how to add hyperlinks to gridview?
-    - how to use paging in gridview?
-*/
+
+body {
+    background-image: linear-gradient(to bottom, #6ac2f0, #8bcaf3, #a7d3f5, #bfdcf7, #d4e5f8);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.ExpenditureRow {
+    background-color:#F8D4DA;
+}
+
+.IncomeRow {
+    background-color:#AFF9AF;
+}
+
+.HeaderRowGridView {
+    background-color:#F8F9CC;
+}
+
+.GridViewRow {
+    background-color:#B6F4FD;
+}
+
+html {
+    height: 100%;
+}

@@ -64,6 +64,10 @@ namespace Budget_Tracker.Member
             BudgetGridView.DataSource = datatable;
             BudgetGridView.DataBind();
             con.Close();
+
+            AssignClassesToRow();
+
+            ChangeHeaderText();
         }
 
         protected void BudgetGridView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -121,6 +125,35 @@ namespace Budget_Tracker.Member
         {
             // Redirect to the page to edit the change with the right id
             Response.Redirect("AddChange.aspx?id=" + id);
+        }
+
+        protected void AssignClassesToRow()
+        {
+            // for each rows in the GridView
+            foreach (GridViewRow r in BudgetGridView.Rows)
+            {
+                // compare the 2nd cell to each row (which corresponds to the amount)
+                if (Double.Parse(r.Cells[1].Text) < 0)
+                {
+                    r.CssClass = "ExpenditureRow";
+                }
+                else
+                {
+                    r.CssClass = "IncomeRow";
+                }
+            }
+            if (BudgetGridView.HeaderRow != null)
+            {
+                BudgetGridView.HeaderRow.CssClass = "HeaderRowGridView";
+            }
+        }
+
+        protected void ChangeHeaderText()
+        {
+            if (Request.QueryString["pseudo"] != null)
+            {
+                BudgetHeaderText.InnerText = Request.QueryString["pseudo"] + "'s budget!";
+            }
         }
     }
 }

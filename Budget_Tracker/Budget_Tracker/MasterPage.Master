@@ -18,14 +18,14 @@
 
         <!-- Placerholder for the header image -->
         <asp:ContentPlaceHolder ID="header" runat="server">
-            <img id="HeaderImage" src="~/images/header.png" alt="Header Image" runat="server" />
+            <img class="HeaderImage" src="~/images/header.png" alt="Header Image" runat="server" />
         </asp:ContentPlaceHolder>
 
         <!-- Load all sitemaps -->
         <asp:SiteMapDataSource ID="GeneralSiteMapDataSource" runat="server" />
         <asp:SiteMapDataSource ID="AdministratorSiteMapDataSource" runat="server" SiteMapProvider="AdministratorSiteMap" />
         <asp:SiteMapDataSource ID="MemberSiteMapDataSource" runat="server" SiteMapProvider="MemberSiteMap" />
-        
+
         <!-- Show the sitemap path for every user, to indicate where he is where now -->
         <div id="SiteMapPathTop">
             <!-- We show the default sitemap path for visitors (AnonymousTempalte) -->
@@ -38,13 +38,13 @@
                 <RoleGroups>
                     <asp:RoleGroup Roles="Administrator">
                         <ContentTemplate>
-                    <asp:SiteMapPath ID="SiteMapPath" SiteMapProvider="AdministratorSiteMap" runat="server" BackColor="#99CCFF" BorderColor="#CCCCFF" BorderStyle="Inset" Font-Italic="True" Font-Bold="True" Font-Size="Larger" ForeColor="#0066FF"></asp:SiteMapPath>
+                            <asp:SiteMapPath ID="SiteMapPath" SiteMapProvider="AdministratorSiteMap" runat="server" BackColor="#99CCFF" BorderColor="#CCCCFF" BorderStyle="Inset" Font-Italic="True" Font-Bold="True" Font-Size="Larger" ForeColor="#0066FF"></asp:SiteMapPath>
                         </ContentTemplate>
                     </asp:RoleGroup>
 
                     <asp:RoleGroup Roles="Member">
                         <ContentTemplate>
-                    <asp:SiteMapPath ID="SiteMapPath" SiteMapProvider="MemberSiteMap" runat="server" BackColor="#99CCFF" BorderColor="#CCCCFF" BorderStyle="Inset" Font-Italic="True" Font-Bold="True" Font-Size="Larger" ForeColor="#0066FF"></asp:SiteMapPath>
+                            <asp:SiteMapPath ID="SiteMapPath" SiteMapProvider="MemberSiteMap" runat="server" BackColor="#99CCFF" BorderColor="#CCCCFF" BorderStyle="Inset" Font-Italic="True" Font-Bold="True" Font-Size="Larger" ForeColor="#0066FF"></asp:SiteMapPath>
                         </ContentTemplate>
                     </asp:RoleGroup>
                 </RoleGroups>
@@ -57,7 +57,7 @@
             <!-- We show the specific sitemaps for members and administrators (RoleGroups) -->
             <asp:LoginView ID="SiteMapsView" runat="server">
                 <AnonymousTemplate>
-                    <asp:TreeView ID="GeneralSiteMapMenu" DataSourceID="GeneralSiteMapDataSource" runat="server" ExpandDepth="0"></asp:TreeView>
+                    <asp:TreeView ID="GeneralSiteMapMenu" DataSourceID="GeneralSiteMapDataSource" runat="server"></asp:TreeView>
                 </AnonymousTemplate>
 
                 <RoleGroups>
@@ -88,8 +88,12 @@
             <!-- If the user is logged-in, then show login status, so he can logout -->
             <asp:LoginView ID="LoginStatusView" runat="server">
                 <LoggedInTemplate>
-                    Welcome <asp:LoginName ID="LoginName1" runat="server" />!
+                    <div id="loginDiv">
+                        Welcome
+                        <asp:LoginName ID="LoginName1" runat="server" />
+                        !
                     <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutPageUrl="~/index.aspx" LogoutAction="Redirect" />
+                    </div>
                 </LoggedInTemplate>
             </asp:LoginView>
         </div>

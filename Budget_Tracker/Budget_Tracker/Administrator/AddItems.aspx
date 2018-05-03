@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <h1>Add an item!</h1>
+
     <asp:DropDownList ID="PossibleItems" OnSelectedIndexChanged="PossibleItems_SelectedIndexChanged" AutoPostBack="true" runat="server">
         <asp:ListItem Selected="true" Value="defaultValue">Select an item</asp:ListItem>
         <asp:ListItem Value="Purpose" Text="Purpose"></asp:ListItem>
