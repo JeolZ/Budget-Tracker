@@ -75,14 +75,7 @@
                 </RoleGroups>
             </asp:LoginView>
         </div>
-
-        <!-- Main Placeholder -->
-        <div id="PlaceholderCenter">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                Master Page placerholder1
-            </asp:ContentPlaceHolder>
-        </div>
-
+        
         <!-- Login Templates -->
         <div id="LoginStatusRight">
             <!-- If the user is logged-in, then show login status, so he can logout -->
@@ -98,6 +91,14 @@
             </asp:LoginView>
         </div>
 
+        <!-- Main Placeholder -->
+        <div id="PlaceholderCenter">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                Master Page placerholder1
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <div id="FooterBottom">Budget Tracker made by Joël ZHU and Roberto STAGI for VIA University College, WEE1 - Web Engineering Course. From February to June 2017. Supervised by Allan Henriksen.</div>
     </form>
 </body>
 </html>

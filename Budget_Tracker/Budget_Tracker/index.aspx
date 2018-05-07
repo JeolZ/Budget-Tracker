@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    Welcome to the Budget Tracker!
+    <h1>Welcome to the Budget Tracker!</h1>
     <br />
     <br />
     The idea of this website is to allow people to track their budgets as in their income and expenditures over time so that they can easily analyse it.

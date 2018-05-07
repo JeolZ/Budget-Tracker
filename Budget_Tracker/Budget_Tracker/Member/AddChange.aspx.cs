@@ -47,19 +47,28 @@ namespace Budget_Tracker.Member
 
             // initialize the date textbox to today's date by default
             ChangeDateTB.Text = Convert.ToString(DateTime.Now.ToString("dd/MM/yyyy"));
+
+            ExpenditureBTN.Checked = true;
         }
 
         protected void ConfirmButton_Click(object sender, EventArgs e)
         {
-            // if there is a GET parameter, then we are modifying a currently existing change
-            if (Request.QueryString["id"] != null)
+            if (MoneyAmount.Text == "")
             {
-                updateChange();
+                ResultLabel.Text = "Please insert at least an amount!";
             }
-            // otherwise, we add a new one
             else
             {
-                insertChange();
+                // if there is a GET parameter, then we are modifying a currently existing change
+                if (Request.QueryString["id"] != null)
+                {
+                    updateChange();
+                }
+                // otherwise, we add a new one
+                else
+                {
+                    insertChange();
+                }
             }
         }
 

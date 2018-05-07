@@ -42,7 +42,7 @@ namespace Budget_Tracker.Member
             SqlConnection con = new SqlConnection(dbstring);
 
             // query
-            string sqlStr = "SELECT * FROM ChangeView WHERE (Pseudo = @username)";
+            string sqlStr = "SELECT * FROM ChangeView WHERE (Pseudo = @username) ORDER BY Date DESC";
 
             // Open the database connection
             con.Open();
@@ -74,6 +74,7 @@ namespace Budget_Tracker.Member
         {
             // Hide columns from the GridView (because we need the data but we don't want to show it)
             e.Row.Cells[0].Visible = false;
+            e.Row.Cells[8].Visible = false;
 
             // Populate the new column with buttons to manipulate the rows
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -154,6 +155,11 @@ namespace Budget_Tracker.Member
             {
                 BudgetHeaderText.InnerText = Request.QueryString["pseudo"] + "'s budget!";
             }
+        }
+
+        protected void StatsButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("BudgetStats.aspx?pseudo=" + pseudo);
         }
     }
 }

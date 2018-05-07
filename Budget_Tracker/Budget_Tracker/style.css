@@ -13,12 +13,6 @@
     float: left;
 }
 
-#PlaceholderCenter {
-    float: left;
-    margin-top: 50px;
-    margin-left: 50px;
-}
-
 #loginDiv {
     padding: 5px;
     height: 100%;
@@ -26,7 +20,13 @@
     float: right;
     border: 1px solid black;
     border-radius: 10px;
-    background-color:#F8EDA5;
+    background-color: #F8EDA5;
+}
+
+#PlaceholderCenter {
+    float: left;
+    margin-top: 50px;
+    margin-left: 50px;
 }
 
 body {
@@ -38,21 +38,43 @@ body {
 }
 
 .ExpenditureRow {
-    background-color:#F8D4DA;
+    background-color: #F8D4DA;
+}
+
+.NegativeAmountLabel {
+    color: #f00;
 }
 
 .IncomeRow {
-    background-color:#AFF9AF;
+    background-color: #AFF9AF;
+}
+
+.PositiveAmountLabel {
+    color: #00b10e;
 }
 
 .HeaderRowGridView {
-    background-color:#F8F9CC;
+    background-color: #F8F9CC;
 }
 
 .GridViewRow {
-    background-color:#B6F4FD;
+    background-color: #B6F4FD;
 }
 
 html {
     height: 100%;
+    font-family: Didot;
+}
+
+#FooterBottom {
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    clear: left;
+    float: left;
+    margin-top: 20px;
+}
+
+.totalAmountdiv {
+    font-size: 50px;
 }

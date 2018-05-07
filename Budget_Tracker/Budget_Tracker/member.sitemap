@@ -3,5 +3,6 @@
   <siteMapNode url="index.aspx" title="Home"  description="Home page">
     <siteMapNode url="Member\AddChange.aspx" title="Add a change"  description="Add a change" />
     <siteMapNode url="Member\Budget.aspx" title="See budget"  description="See budget" />
+    <siteMapNode url="Member\BudgetStats.aspx" title="Budget statistics"  description="Budget statistics" />
   </siteMapNode>
 </siteMap>

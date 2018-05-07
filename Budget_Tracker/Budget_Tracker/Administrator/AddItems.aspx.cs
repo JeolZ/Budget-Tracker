@@ -52,6 +52,8 @@ namespace Budget_Tracker.Administrator
             ItemNamesList.DataSource = datatable;
             ItemNamesList.DataBind();
             con.Close();
+
+            AssignClassesToRow();
         }
 
         protected void generateForm()
@@ -169,5 +171,18 @@ namespace Budget_Tracker.Administrator
             Response.Redirect(Request.RawUrl);
         }
 
+
+        protected void AssignClassesToRow()
+        {
+            // for each rows in the GridView
+            foreach (GridViewRow r in ItemNamesList.Rows)
+            {
+                r.CssClass = "GridViewRow";
+            }
+            if (ItemNamesList.HeaderRow != null)
+            {
+                ItemNamesList.HeaderRow.CssClass = "HeaderRowGridView";
+            }
+        }
     }
 }

@@ -68,6 +68,7 @@
     <Content Include="index.aspx" />
     <Content Include="Member\AddChange.aspx" />
     <Content Include="Member\Budget.aspx" />
+    <Content Include="Member\BudgetStats.aspx" />
     <Content Include="Signup.aspx" />
     <Content Include="style.css" />
     <Content Include="Web.config">
@@ -117,6 +118,14 @@
     <Compile Include="Member\Budget.aspx.designer.cs">
       <DependentUpon>Budget.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Member\BudgetStats.aspx.cs">
+      <DependentUpon>BudgetStats.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member\BudgetStats.aspx.designer.cs">
+      <DependentUpon>BudgetStats.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MoneyAmount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>

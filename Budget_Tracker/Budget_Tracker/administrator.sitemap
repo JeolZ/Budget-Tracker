@@ -4,6 +4,7 @@
     <siteMapNode title="Budget"  description="Budget">
       <siteMapNode url="Member\AddChange.aspx" title="Add a change"  description="Add a change" />
       <siteMapNode url="Member\Budget.aspx" title="See budget"  description="See budget" />
+      <siteMapNode url="Member\BudgetStats.aspx" title="Budget statistics"  description="Budget statistics" />
     </siteMapNode>
     <siteMapNode title="Administrator back office"  description="Back office">
       <siteMapNode url="Administrator\SearchMember.aspx" title="Search members"  description="Search members" />
