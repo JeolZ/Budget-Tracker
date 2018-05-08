@@ -11,6 +11,13 @@ namespace Budget_Tracker
         private DateTime date;
         private string purpose;
 
+        public MoneyAmount(MoneyAmount m)
+        {
+            amount = m.amount;
+            date = m.date;
+            purpose = m.purpose;
+        }
+
         public MoneyAmount(double amount, DateTime date, string purpose)
         {
             this.amount = amount;
@@ -31,6 +38,16 @@ namespace Budget_Tracker
         public string getPurpose()
         {
             return this.purpose;
+        }
+
+        public void setAmount(double amount)
+        {
+            this.amount = amount;
+        }
+
+        public void addAmount(double amount)
+        {
+            this.amount += amount;
         }
     }
 }

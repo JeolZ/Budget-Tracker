@@ -130,48 +130,80 @@ namespace Budget_Tracker.Member
 
         protected void populateLineChart()
         {
+            //group by date all the income/expenditure
+            List<MoneyAmount> monAm = new List<MoneyAmount>();
+
+            string prevDate = "";
+            for (int i = 0, j = -1; i < moneyAmount.Keys.Count; ++i)
+            {
+                //if it's still the same date, add the amount to the previous
+                if (moneyAmount[i].getDate().ToString() == prevDate && j > 0)
+                {
+                    monAm[j].addAmount(moneyAmount[i].getAmount());
+                }
+                else //if it's a new date, add a new item to the list
+                {
+                    prevDate = moneyAmount[i].getDate().ToString();
+                    monAm.Add(new MoneyAmount(moneyAmount[i]));
+                    ++j;
+                }
+            }
+
             // the Y axis of the chart, corresponds to each date of change
-            string[] yAxisDate = new string[moneyAmount.Values.Count];
+            string[] yAxisDate = new string[monAm.Count];
             // the X axis of the chart, corresponds to the new amount of money after each date (i.e. if a user starts with 250€ on date1 and spends 20€ on date2, the new amount will be 230€)
             // this is needed so we can see the progression of a user's budget over time on the chart
-            decimal[] xAxisAmountEachDate = new decimal[moneyAmount.Keys.Count];
+            decimal[] xAxisAmountEachDate = new decimal[monAm.Count];
 
             // if the user has any income/expenditure
             if (xAxisAmountEachDate.Count() != 0)
             {
+                // fill the first item of the array because we need to add the amounts to the previous values
                 xAxisAmountEachDate[0] = Convert.ToDecimal(moneyAmount[0].getAmount());
+                // convert to decimal and with only 2 numbers after the comma
                 xAxisAmountEachDate[0] = Convert.ToDecimal(xAxisAmountEachDate[0].ToString("#.##"));
                 yAxisDate[0] = moneyAmount[0].getDate().ToShortDateString().ToString();
-                for (int i = 1; i < moneyAmount.Keys.Count; ++i)
+                for (int i = 1; i < monAm.Count; ++i)
                 {
-                    xAxisAmountEachDate[i] = xAxisAmountEachDate[i - 1] + Convert.ToDecimal(moneyAmount[i].getAmount());
-                    yAxisDate[i] = moneyAmount[i].getDate().ToShortDateString().ToString();
+                    // add the amount to the previous value
+                    xAxisAmountEachDate[i] = xAxisAmountEachDate[i - 1] + Convert.ToDecimal(monAm[i].getAmount());
+                    yAxisDate[i] = monAm[i].getDate().ToShortDateString().ToString();
                     xAxisAmountEachDate[i] = Convert.ToDecimal(xAxisAmountEachDate[i].ToString("#.##"));
                 }
             }
 
+            // title of the chart
             BudgetLineChart.ChartTitle = string.Format("{0}'s budget over time", pseudo);
 
+            // Y dimension of the chart (and not x like the name suggests)
             BudgetLineChart.Series.Add(new AjaxControlToolkit.LineChartSeries { Name = pseudo + "'s budget", Data = xAxisAmountEachDate.ToArray() });
+            // X dimension of the chart (and not Y like the name suggests)
             BudgetLineChart.CategoriesAxis = string.Join(",", yAxisDate.ToArray());
-            BudgetLineChart.ChartWidth = (moneyAmount.Values.Count * 100).ToString();
 
+            // Width of the chart
+            BudgetLineChart.ChartWidth = (moneyAmount.Values.Count * 75).ToString();
+
+            // add a little euro sign for when the user hover on a point on the chart
             BudgetLineChart.AreaDataLabel = "€";
         }
 
         protected void populatePieChart()
         {
+            // list all amounts per purpose
             Dictionary<string, double> amountPerPurpose = new Dictionary<string, double>();
 
             foreach (MoneyAmount amount in moneyAmount.Values)
             {
+                // we only want the spendings
                 if (amount.getAmount() < 0)
                 {
-
+                    // if the purpose already exists
                     if (amountPerPurpose.ContainsKey(amount.getPurpose()))
                     {
+                        // then we just add the values
                         amountPerPurpose[amount.getPurpose()] += amount.getAmount();
                     }
+                    // else we add the purpose
                     else
                     {
                         amountPerPurpose.Add(amount.getPurpose(), amount.getAmount());
@@ -179,18 +211,17 @@ namespace Budget_Tracker.Member
                 }
             }
 
+            // add the values to the pie chart
             foreach (KeyValuePair<string, double> entry in amountPerPurpose)
             {
-                if (entry.Key != "None")
+                BudgetPieChart.PieChartValues.Add(new AjaxControlToolkit.PieChartValue
                 {
-                    BudgetPieChart.PieChartValues.Add(new AjaxControlToolkit.PieChartValue
-                    {
-                        Category = entry.Key,
-                        Data = Convert.ToDecimal(entry.Value.ToString("#.##"))
-                    });
-                }
+                    Category = entry.Key,
+                    Data = Convert.ToDecimal(entry.Value.ToString("#.##"))
+                });
             }
 
+            // title
             BudgetPieChart.ChartTitle = string.Format("{0}'s spending per purpose", pseudo);
         }
     }

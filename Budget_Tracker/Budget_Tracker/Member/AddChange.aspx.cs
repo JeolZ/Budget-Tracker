@@ -242,7 +242,7 @@ namespace Budget_Tracker.Member
             con.Open();
 
             // Update data from the DB
-            string sqlStr2 = "UPDATE Change SET ChangeAmountMoney = @amount, ChangeDate = @date, ChangeComment = @comment, ChangeRecipient = @recipient, CurrencyID = @currencyid, PaymentMethodID = @paymentmethodid, PurposeId = @purposeid, Pseudo = @pseudo WHERE ChangeId = @id;";
+            string sqlStr2 = "UPDATE Change SET ChangeAmountMoney = @amount, ChangeDate = @date, ChangeComment = @comment, ChangeRecipient = @recipient, CurrencyID = @currencyid, PaymentMethodID = @paymentmethodid, PurposeId = @purposeid WHERE ChangeId = @id;";
             SqlCommand sqlCmd2 = new SqlCommand(sqlStr2, con);
             sqlCmd2.Parameters.AddWithValue("@amount", amount);
             sqlCmd2.Parameters.AddWithValue("@date", date);
@@ -251,7 +251,6 @@ namespace Budget_Tracker.Member
             sqlCmd2.Parameters.AddWithValue("@currencyid", currencyInt);
             sqlCmd2.Parameters.AddWithValue("@paymentmethodid", paymentMethodInt);
             sqlCmd2.Parameters.AddWithValue("@purposeid", purposeInt);
-            sqlCmd2.Parameters.AddWithValue("@pseudo", pseudo);
             sqlCmd2.Parameters.AddWithValue("@id", Request.QueryString["id"]);
 
             // Execute the SQL command
@@ -370,6 +369,9 @@ namespace Budget_Tracker.Member
             ChangeTimeTB.Text = date.ToLongTimeString();
         }
 
+        /**
+         * When the user wants to modify a change, this trigger allows the DropDownList to be changed to the correct selected item
+         */
         protected void ChangePurposeDD_DataBound(object sender, EventArgs e)
         {
             if (Request.QueryString["id"] != null)

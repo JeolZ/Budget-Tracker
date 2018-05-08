@@ -20,10 +20,10 @@
             Amount:
             <asp:TextBox ID="MoneyAmount" runat="server"></asp:TextBox>
             <!-- Checks that the user enters a valid number (decimal or numerical) -->
-            <asp:RegularExpressionValidator ID="MoneyAmountRegex" runat="server" ValidationExpression="^[1-9]\d*(\.\d+)?$"
+            <asp:RegularExpressionValidator ID="MoneyAmountRegex" runat="server" ValidationExpression="^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$"
                 ErrorMessage="Please enter valid number." ControlToValidate="MoneyAmount" />
         </div>
-        
+
         <!-- indicate the currency of the change -->
         <div id="ChangeCurrency">
             Currency:

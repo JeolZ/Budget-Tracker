@@ -15,6 +15,4 @@
     <br />
 
     <ajaxToolkit:PieChart ID="BudgetPieChart" ChartType="Column" runat="server"></ajaxToolkit:PieChart>
-
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 </asp:Content>
